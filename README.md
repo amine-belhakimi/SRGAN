@@ -43,4 +43,9 @@ one solution is proposed by Karpathy et al.
 using stacked frames on top of eachothers instead of enhancing one frame at the time, another solution is to use LSTMs (Long Short Term Momory) recurent neural networks.
 
 # References
-the code for this projet is based on : [github link](https://github.com/eriklindernoren/PyTorch-GAN/tree/master/implementations/pix2pix)
+the code for this projet is based on : [link](https://github.com/eriklindernoren/PyTorch-GAN/tree/master/implementations/pix2pix) 
+
+#### papers 
+[Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](https://arxiv.org/pdf/1609.04802.pdf)
+[Residual Dense Network for Image Super-Resolution](https://arxiv.org/abs/1802.08797)
+[ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks](https://arxiv.org/abs/1809.00219)
