@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchvision.models import vgg16
 
-
+## Residual block for the generator 
 class ResBlock(nn.Module):
 	def __init__(self,in_features):
 		super(ResBlock,self).__init__()
@@ -20,20 +20,27 @@ class ResBlock(nn.Module):
     def forward(self,x):
     	return x + self.conv(x)
 
+
+### Generator 
+
 class Generator(nn.Module):
 	def __init__(self):
 		super(Generator,self).__init__()
 
+		#first layer of convolution without the residual block
 		self.conv1=nn.Sequuential(nn.Conv2d(3,64,9,1,4),
 								  nn.Prelu())
 
+		#a serie of residual blocks (8)
 		resBlocks=[]
-		for i in range(16):
+		for i in range(8):
 			resBlocks.append(ResBlock(64))
 		self.resBlocks=nn.Sequuential(*resBlocks)
 
+		#second convolution after the residual blocks
 		self.conv2=nn.Sequential(nn.Conv2d(64,64,3,1,1),nn.BatchNorm2D(64,0.8))
 
+		# upsampling layer with PixelShuffle like stated in the paper
 		self.upsampling=nn.Sequential(nn.Conv2d(64,256,3,1,1),
 									  nn.BatchNorm2D(256),
 									  nn.PixelShuffle(2),
@@ -54,28 +61,31 @@ class Generator(nn.Module):
 		return out
 
 
-	class Discriminator(nn.Module):
-		def __init__(self):
-			super(Discriminator,self).__init__()
+###### Discriminator
+class Discriminator(nn.Module):
+	def __init__(self):
+		super(Discriminator,self).__init__()
 
-		def discriminatorBlock(in_filters,out_filters):
-			layers = [nn.Conv2d(in_filters, out_filters, 4, stride=2, padding=1),
-					  nn.BatchNorm2d(out_filters),
-					  nn.LeakyReLU(0.2,inplace=True)]
-            return layers
+	#discriminator reusable convolution block
+	def discriminatorBlock(in_filters,out_filters):
+		layers = [nn.Conv2d(in_filters, out_filters, 4, stride=2, padding=1),
+				  nn.BatchNorm2d(out_filters),
+				  nn.LeakyReLU(0.2,inplace=True)]
+        return layers
 
-        self.model=nn.Seuential(*discriminatorBlock(3,64),
-        						*discriminatorBlock(64,128),
-        						*discriminatorBlock(128,256),
-        						*discriminatorBlock(256,512)
-        						nn.ZeroPad2d((1,0,1,0)),
-        						nn.Conv2d(512,1,4,1,False)
-        						)
+    self.model=nn.Seuential(*discriminatorBlock(3,64),
+    						*discriminatorBlock(64,128),
+    						*discriminatorBlock(128,256),
+    						*discriminatorBlock(256,512)
+    						nn.ZeroPad2d((1,0,1,0)),
+    						nn.Conv2d(512,1,4,1,False)
+    						)
 
-        def forward(self,x):
-        	return self.model(x)
+    def forward(self,x):
+    	return self.model(x)
 
 
+###### pretrained VGG network for the perceptual loss
 class Vgg_Extractor(nn.Module):
 	def __init__(self):
 		super(FeatureExtractor,self).__init__()
