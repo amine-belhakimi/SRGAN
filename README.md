@@ -5,6 +5,13 @@ Network](https://arxiv.org/pdf/1609.04802.pdf))
 ## Authors
 Christian Ledig, Lucas Theis, Ferenc Huszar, Jose Caballero, Andrew Cunningham, Alejandro Acosta, Andrew Aitken, Alykhan Tejani, Johannes Totz, Zehan Wang, Wenzhe Shi
 
+## Requirements
+
+* python 3.6
+* numpy
+* pytorch
+* Pillow
+
 ## Architecture 
 
 ![](figures/srgan.png)
@@ -17,6 +24,8 @@ in the first attempt i used Relu instead of PRelu activation function then did t
 ### Training
 since i don't have good hardware to train such large model (i trained for a couple of epochs and it took a long time) 
 i used instead a pretrained model [link]() to test the SRGAN 
+
+
 
 ## Results
 
@@ -43,9 +52,11 @@ one solution is proposed by Karpathy et al.
 using stacked frames on top of eachothers instead of enhancing one frame at the time, another solution is to use LSTMs (Long Short Term Momory) recurent neural networks.
 
 # References
-the code for this projet is based on : [link](https://github.com/eriklindernoren/PyTorch-GAN/tree/master/implementations/pix2pix) 
+* the code for this projet is based on : [link](https://github.com/eriklindernoren/PyTorch-GAN/tree/master/implementations/pix2pix) 
 
 #### papers 
-[Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](https://arxiv.org/pdf/1609.04802.pdf)
-[Residual Dense Network for Image Super-Resolution](https://arxiv.org/abs/1802.08797)
-[ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks](https://arxiv.org/abs/1809.00219)
+
+* [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](https://arxiv.org/pdf/1609.04802.pdf)
+* [Residual Dense Network for Image Super-Resolution](https://arxiv.org/abs/1802.08797)
+* [ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks](https://arxiv.org/abs/1809.00219)
+ 
