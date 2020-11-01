@@ -43,3 +43,4 @@ one solution is proposed by Karpathy et al.
 using stacked frames on top of eachothers instead of enhancing one frame at the time, another solution is to use LSTMs (Long Short Term Momory) recurent neural networks.
 
 # References
+the code for this projet is based on : [github link](https://github.com/eriklindernoren/PyTorch-GAN/tree/master/implementations/pix2pix)
