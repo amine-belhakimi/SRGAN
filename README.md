@@ -7,4 +7,4 @@ Christian Ledig, Lucas Theis, Ferenc Huszar, Jose Caballero, Andrew Cunningham, 
 
 ## Architecture 
 
-![Image](figures/.png)
+![](figures/srgan.png)
