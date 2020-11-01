@@ -22,4 +22,24 @@ i used instead a pretrained model [link]() to test the SRGAN
 
 i tested on some images of Mohamed Ali profiles, results are shown bellow, the SRGAN architecture is able to create very detailled images 4 time the size of the initial image
 
-![](results/ali.png)
+![](data/ali.jpg)
+![](results/res_0000.png)
+
+the second image
+
+![](data/ali.png)
+![](results/res_0001.png)
+
+## Generalisation
+
+we can see that the results are very good but there is some artefactes and deformation in the eyes,this is primarily because of the training data, 
+to generalize to a larger types of images we must train our network with different dataset in different contexte, this will allow a better generalisation to different images in different contexts 
+
+![](figures/video_fusion.png)
+## Videos 
+
+we can use the same architecture to unhance the quality of a video by using a 3D convolution, but a major problem with videos is the temporel dependecie between frames.
+one solution is proposed by Karpathy et al.
+using stacked frames on top of eachothers instead of enhancing one frame at the time, another solution is to use LSTMs (Long Short Term Momory) recurent neural networks.
+
+# References
