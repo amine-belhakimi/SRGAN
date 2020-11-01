@@ -8,3 +8,18 @@ Christian Ledig, Lucas Theis, Ferenc Huszar, Jose Caballero, Andrew Cunningham, 
 ## Architecture 
 
 ![](figures/srgan.png)
+
+in this implementation i replaced batch-normalisation layer in the Instance-Normalisation layer 
+and used a smaller patch GAN discriminator 
+
+in the first attempt i used Relu instead of PRelu activation function then did the same thing as the paper by using PRelu
+
+### Training
+since i don't have good hardware to train such large model (i trained for a couple of epochs and it took a long time) 
+i used instead a pretrained model [link]() to test the SRGAN 
+
+## Results
+
+i tested on some images of Mohamed Ali profiles, results are shown bellow, the SRGAN architecture is able to create very detailled images 4 time the size of the initial image
+
+![](results/ali.png)
